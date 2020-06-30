@@ -67,6 +67,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: url))
     }
     
+    func showAlert() {
+        
+        let ac = UIAlertController(title: "Not Allowed", message: "Sorry, but you are not allowed to visit this website.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(ac, animated: true)
+    }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
     }
@@ -81,6 +88,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
                     return
                 }
             }
+            showAlert()
         }
         
         decisionHandler(.cancel)
